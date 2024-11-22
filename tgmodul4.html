@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Alumni</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #333;
+            text-align: center;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        #searchInput {
+            width: 50%;
+            padding: 10px 35px 10px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 20px;
+            pointer-events: none;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            width: 250px; /* Lebar kartu tetap */
+            height: 250px; /* Tinggi kartu sama dengan lebar */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .card.hidden {
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none; /* Mencegah interaksi dengan elemen tersembunyi */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .card h2 {
+            margin: 5px 0;
+            color: #555;
+            font-size: 18px;
+        }
+
+        .card .info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>DAFTAR ALUMNI</h1>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari berdasarkan nama atau jurusan...">
+        <span class="search-icon">🔍</span>
+    </div>
+    <div class="container">
+        <div class="card" data-name="Nuryani" data-jurusan="Sistem Informasi">
+            <h2 class="name">Nuryani</h2>
+            <ul class="info">
+                <li>Jurusan: Sistem Informasi</li>
+                <li>Angkatan: 2023</li>
+            </ul>
+            <a href="https://wa.me/qr/2Z3CSSL5BDR7N1" class="btn">Kontak</a>
+        </div>
+        <div class="card" data-name="Febri Putra Pratama" data-jurusan="Sistem Informasi">
+            <h2 class="name">Febri Putra Pratama</h2>
+            <ul class="info">
+                <li>Jurusan: Sistem Informasi</li>
+                <li>Angkatan: 2023</li>
+            </ul>
+            <a href="https://wa.me/088238319047" class="btn">Kontak</a>
+        </div>
+        <div class="card" data-name="Aulya Hudzaifah" data-jurusan="Desain Komunikasi Visual">
+            <h2 class="name">Aulya Hudzaifah</h2>
+            <ul class="info">
+                <li>Jurusan: Desain Komunikasi Visual</li>
+                <li>Angkatan: 2023</li>
+            </ul>
+            <a href="https://wa.me/0895635528744" class="btn">Kontak</a>
+        </div>
+    </div>
+    <footer>
+        © 2023 Website Alumni. Semua hak dilindungi.
+    </footer>
+    <script>
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const searchValue = this.value.toLowerCase();
+            const cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const jurusan = card.dataset.jurusan.toLowerCase();
+
+                if (name.includes(searchValue) || jurusan.includes(searchValue)) {
+                    card.classList.remove("hidden");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
